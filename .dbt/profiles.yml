@@ -1,0 +1,19 @@
+data_warehouse:
+  target: dev
+  outputs:
+    dev:
+      type: athena
+      database: your_database_name  # The Athena database to use
+      schema: your_schema_name      # The schema to use within the database
+      region_name: us-east-1        # AWS region where your Athena instance is located
+      s3_staging_dir: s3://your-bucket/path/to/query/results/  # S3 location for query results
+      aws_profile: default          # AWS profile to use for authentication (from ~/.aws/credentials)
+      # Alternative authentication methods (uncomment as needed):
+      # aws_access_key_id: "{{ env_var('AWS_ACCESS_KEY_ID') }}"
+      # aws_secret_access_key: "{{ env_var('AWS_SECRET_ACCESS_KEY') }}"
+      # role_arn: "arn:aws:iam::123456789012:role/my-role"  # For IAM role-based auth
+      threads: 4                    # Number of concurrent connections
+      work_group: primary           # Athena workgroup to use
+      catalog: AwsDataCatalog       # The catalog to use (usually AwsDataCatalog)
+      retry_limit: 3                # Number of retries for failed queries
+      poll_interval: 1              # Seconds to wait between query status checks

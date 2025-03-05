@@ -1,0 +1,13 @@
+[project]
+name = "data_warehouse"
+version = "0.0.1"
+description = "DBT project for data warehouse and building data marts"
+authors = [
+  {name="Joshua Marango", email="hello@joshuamarango.com"}
+]
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = [
+    "dbt-core==1.9.2",
+    "dbt-athena-community==1.8.4"
+]
