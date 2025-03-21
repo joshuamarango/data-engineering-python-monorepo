@@ -14,7 +14,8 @@ data-warehouse = { workspace = true }
 
 [tool.uv.workspace]
 members = [
-  "data-warehouse"
+  "data-warehouse",
+  "data-ingestion/di-webhook"
 ]
 
 [tool.uv]
@@ -24,6 +25,9 @@ dev-dependencies = [
     "pytest>=8.3.5",
     # These are added as dev dependencies becuase they should be available
     #  when developing the project.
+    "pydantic==2.10.6",
+    "pydantic-settings==2.8.1",
+    "aws-lambda-powertools[all]==3.7.0",
 ]
 package = false
 
