@@ -11,12 +11,12 @@ profile: 'data_warehouse'
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: ["../data_warehouse/src/data_warehouse/models"]
-analysis-paths: ["../data_warehouse/src/data_warehouse/analyses"]
-test-paths: ["../data_warehouse/src/data_warehouse/tests"]
-seed-paths: ["../data_warehouse/src/data_warehouse/seeds"]
-macro-paths: ["../data_warehouse/src/data_warehouse/macros"]
-snapshot-paths: ["../data_warehouse/src/data_warehouse/snapshots"]
+model-paths: ["data-warehouse/src/data_warehouse/models"]
+analysis-paths: ["data-warehouse/src/data_warehouse/analyses"]
+test-paths: ["data-warehouse/src/data_warehouse/tests"]
+seed-paths: ["data-warehouse/src/data_warehouse/seeds"]
+macro-paths: ["data-warehouse/src/data_warehouse/macros"]
+snapshot-paths: ["data-warehouse/src/data_warehouse/snapshots"]
 
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
