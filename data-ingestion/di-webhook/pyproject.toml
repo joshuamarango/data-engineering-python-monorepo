@@ -1,0 +1,12 @@
+[project]
+name = "data-ingestion"
+version = "0.0.1"
+description = "Ingestion of data from webhook via API Gateway"
+authors = [
+    {name="Joshua Marango", email="hello@joshuamarango.com"}
+]
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = [
+    "aws-lambda-powertools[all]"
+]
