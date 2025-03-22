@@ -9,5 +9,6 @@ requires-python = ">=3.12"
 readme = "README.md"
 dependencies = [
     "dbt-core==1.9.2",
-    "dbt-athena-community==1.8.4"
+    "dbt-athena-community==1.8.4",
+    "dbt-redshift==1.9.2"
 ]
