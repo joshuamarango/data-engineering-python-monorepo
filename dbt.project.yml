@@ -1,12 +1,11 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'data_warehouse'
+name: 'acme_datalakehouse'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'data_warehouse'
+profile: 'analytics_engineer'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -23,14 +22,179 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
 models:
-  data_warehouse:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+  acme_datalakehouse:
+    raw:  # Bronze layer - Raw data in Iceberg format
+      +materialized: external
+      +external_location: "s3://your-bucket/bronze/"
+      +file_format: "iceberg"
+      
+      analytics:
+        +group: bronze
+        +schema: analytics
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      customer:
+        +group: bronze
+        +schema: customer
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      finance:
+        +group: bronze
+        +schema: finance
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      marketing:
+        +group: bronze
+        +schema: marketing
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      operations:
+        +group: bronze
+        +schema: operations
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      payment:
+        +group: bronze
+        +schema: payment
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      product:
+        +group: bronze
+        +schema: product
+        +tags:
+          - "raw"
+          - "bronze"
+      
+      web:
+        +group: bronze
+        +schema: web
+        +tags:
+          - "raw"
+          - "bronze"
+    
+    stage:  # Silver layer - Staging models in Iceberg format
+      +materialized: table
+      +file_format: "iceberg"
+      +location_root: "s3://your-bucket/silver/"
+      
+      analytics:
+        +group: silver
+        +schema: analytics
+        +tags:
+          - "stage"
+          - "silver"
+      
+      customer:
+        +group: silver
+        +schema: customer
+        +tags:
+          - "stage"
+          - "silver"
+      
+      finance:
+        +group: silver
+        +schema: finance
+        +tags:
+          - "stage"
+          - "silver"
+      
+      marketing:
+        +group: silver
+        +schema: marketing
+        +tags:
+          - "stage"
+          - "silver"
+      
+      operations:
+        +group: silver
+        +schema: operations
+        +tags:
+          - "stage"
+          - "silver"
+      
+      payment:
+        +group: silver
+        +schema: payment
+        +tags:
+          - "stage"
+          - "silver"
+      
+      product:
+        +group: silver
+        +schema: product
+        +tags:
+          - "stage"
+          - "silver"
+      
+      web:
+        +group: silver
+        +schema: web
+        +tags:
+          - "stage"
+          - "silver"
+    
+    mart:  # Gold layer - Analytics-ready models in Redshift
+      +materialized: table
+      +target: mart
+      
+      customer_journey:
+        +group: gold
+        +schema: customer_journey
+        +tags:
+          - "mart"
+          - "gold"
+      
+      customer_satisfaction:
+        +group: gold
+        +schema: customer_satisfaction
+        +tags:
+          - "mart"
+          - "gold"
+      
+      financial_planning:
+        +group: gold
+        +schema: financial_planning
+        +tags:
+          - "mart"
+          - "gold"
+      
+      marketing:
+        +group: gold
+        +schema: marketing
+        +tags:
+          - "mart"
+          - "gold"
+      
+      operational_performance:
+        +group: gold
+        +schema: operational_performance
+        +tags:
+          - "mart"
+          - "gold"
+      
+      product_performance:
+        +group: gold
+        +schema: product_performance
+        +tags:
+          - "mart"
+          - "gold"
+      
+      sales_and_revenue:
+        +group: gold
+        +schema: sales_and_revenue
+        +tags:
+          - "mart"
+          - "gold"
