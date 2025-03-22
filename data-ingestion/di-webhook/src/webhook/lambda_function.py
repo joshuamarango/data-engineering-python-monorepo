@@ -4,14 +4,14 @@ from aws_lambda_powertools.logging import correlation_paths
 from aws_lambda_powertools.utilities.typing import LambdaContext
 
 from webhook.routes import XeroRouter
-from utils.constants import WebhookSettings
+from webhook.utils.constants import EnvironmentVariables
 
 tracer = Tracer()
 logger = Logger()
 app = APIGatewayHttpResolver()
-settings = WebhookSettings()
+env_vars = EnvironmentVariables()
 
-log_event: bool = settings.lambda_run_id != ""
+log_event: bool = env_vars.lambda_run_id != ""
 
 
 # Add routes here
@@ -21,5 +21,5 @@ app.include_router(XeroRouter, prefix="xero")
 @logger.inject_lambda_context(correlation_id_path=correlation_paths.API_GATEWAY_HTTP, log_event=log_event)
 @tracer.capture_lambda_handler
 def lambda_handler(event: dict, context: LambdaContext) -> dict:
-    app.append_context(api_settings=settings)
+    app.append_context(env_vars=env_vars)
     return app.resolve(event, context)
