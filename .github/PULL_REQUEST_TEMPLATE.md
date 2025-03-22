@@ -4,15 +4,30 @@
 <!-- Provide a brief overview of the changes you're making, and why they're necessary -->
 
 ## Type of Change
-<!-- Check the relevant option(s) -->
-- [ ] Bug fix (non-breaking change that fixes an issue)
-- [ ] New feature (non-breaking change that adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] Data pipeline modification
-- [ ] Schema change
-- [ ] Documentation update
-- [ ] Refactoring/Technical debt
-- [ ] DevOps/Infrastructure change
+<!-- Check all relevant option(s) based on the conventional commits you've made -->
+- [ ] feat: New feature
+- [ ] fix: Bug fix
+- [ ] docs: Documentation changes
+- [ ] style: Code style/formatting (no production code change)
+- [ ] refactor: Code refactoring (no functional changes)
+- [ ] perf: Performance improvements
+- [ ] test: Adding or modifying tests
+- [ ] build: Changes to build system or dependencies
+- [ ] ci: Changes to CI configuration
+- [ ] chore: Other changes that don't modify src or test files
+- [ ] revert: Reverting previous commits
+
+## Changes Description
+<!-- List and describe your changes based on conventional commit types -->
+
+### Features
+<!-- List of new features added (if applicable) -->
+
+### Fixes
+<!-- List of bugs fixed (if applicable) -->
+
+### Other Changes
+<!-- Any other significant changes not covered above -->
 
 ## Impact
 <!-- Describe the impact of these changes (e.g., performance, data quality) -->
@@ -49,6 +64,9 @@
 ## Related Issues
 <!-- Link to any related issues -->
 Closes #
+
+## Breaking Changes
+<!-- Document any breaking changes and migration steps if applicable -->
 
 ## Additional Notes
 <!-- Any additional information that reviewers should know --> 
