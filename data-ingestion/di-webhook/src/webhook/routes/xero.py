@@ -16,7 +16,6 @@ from webhook.utils.types import WebhookEventMapping
 tracer = Tracer()
 router = APIGatewayRouter()
 logger = Logger(child=True)
-settings = WebhookSettings()
 
 
 xero_mapping: Dict[str, WebhookEventMapping] = {
@@ -82,6 +81,7 @@ def process_xero_webhook():
         - 401 Unauthorized for incorrectly signed payloads
     """
     # Get the Lambda event and context from the decorator
+    api_settings: WebhookSettings = router.context.get("api_settings", None)
     event = router.current_event
 
     # Get headers and body
@@ -89,7 +89,7 @@ def process_xero_webhook():
     body = event.body
 
     # Verify signature
-    is_valid, message = _verify_xero_signature(headers, body, settings.xero_webhook_key)
+    is_valid, message = _verify_xero_signature(headers, body, api_settings.xero_webhook_key)
 
     if not is_valid:
         logger.warning(f"Invalid Xero webhook signature: {message}")
