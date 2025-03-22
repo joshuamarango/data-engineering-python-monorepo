@@ -13,6 +13,7 @@ settings = WebhookSettings()
 
 log_event: bool = settings.lambda_run_id != ""
 
+
 # Add routes here
 app.include_router(XeroRouter, prefix="xero")
 

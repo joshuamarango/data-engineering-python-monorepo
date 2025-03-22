@@ -81,7 +81,7 @@ def process_xero_webhook():
         - 401 Unauthorized for incorrectly signed payloads
     """
     # Get the Lambda event and context from the decorator
-    api_settings: WebhookSettings = router.context.get("api_settings", None)
+    api_settings: WebhookSettings = router.context.get("api_settings", WebhookSettings())
     event = router.current_event
 
     # Get headers and body
