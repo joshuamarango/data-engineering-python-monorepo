@@ -1,5 +1,5 @@
 [project]
-name = "data-ingestion"
+name = "di-webhook"
 version = "0.0.1"
 description = "Ingestion of data from webhook via API Gateway"
 authors = [

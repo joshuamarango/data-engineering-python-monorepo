@@ -14,8 +14,10 @@ data-warehouse = { workspace = true }
 
 [tool.uv.workspace]
 members = [
+  "data-catalog",
+  "data-ingestion/di-webhook",
+  "data-ingestion/di-microbatch",
   "data-warehouse",
-  "data-ingestion/di-webhook"
 ]
 
 [tool.uv]
