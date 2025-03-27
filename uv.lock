@@ -6,6 +6,7 @@ requires-python = ">=3.12"
 members = [
     "data-catalog",
     "data-engineering-python-monorepo",
+    "data-integration",
     "data-warehouse",
     "di-microbatch",
     "di-webhook",
@@ -412,6 +413,23 @@ dev = [
     { name = "pydantic-settings", specifier = "==2.8.1" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "requests", specifier = ">=2.28.0" },
+]
+
+[[package]]
+name = "data-integration"
+version = "0.0.1"
+source = { virtual = "data-integration" }
+dependencies = [
+    { name = "aws-lambda-powertools", extra = ["all"] },
+    { name = "pydantic" },
+    { name = "requests" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "aws-lambda-powertools", extras = ["all"] },
+    { name = "pydantic" },
+    { name = "requests" },
 ]
 
 [[package]]

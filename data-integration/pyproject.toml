@@ -1,0 +1,14 @@
+[project]
+name = "data-integration"
+version = "0.0.1"
+description = "Service to integrate data with external systems - Reverse ETL"
+authors = [
+    {name="Joshua Marango", email="hello@joshuamarango.com"}
+]
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = [
+    "aws-lambda-powertools[all]",
+    "pydantic",
+    "requests"
+]
